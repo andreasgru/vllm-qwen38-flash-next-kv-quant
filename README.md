@@ -2,7 +2,7 @@
 
 A container-side patch that lets vLLM run `Qwen3.8-Flash-Next` with `--kv-cache-dtype fp8_e4m3` or `--kv-cache-dtype nvfp4` on the QSA (Qwen sparse attention) layers. Stock vLLM refuses anything but bf16 there. Measured on one RTX PRO 6000 Blackwell (SM120, 96 GB): the KV pool grows 1.889× with fp8 and 3.059× with nvfp4 at identical VRAM.
 
-**Status:** upstream draft PR open: [vllm-project/vllm#54846](https://github.com/vllm-project/vllm/pull/54846) (cleaned, English, no environment switches, ported to the `qwen4_exp` module name in `main`, with numerical tests; 13 tests pass on SM120). This repository keeps the validated container patch for the `qwen38-flash-next` image build. Built and validated on one machine and one architecture. Comments in the patch script are German. Everything below was measured, nothing is quoted from vendor material.
+**Status:** upstream PR open for review: [vllm-project/vllm#54846](https://github.com/vllm-project/vllm/pull/54846) (cleaned, English, no environment switches, ported to the `qwen4_exp` module name in `main`, with numerical tests; 13 tests pass on SM120). This repository keeps the validated container patch for the `qwen38-flash-next` image build. Built and validated on one machine and one architecture. Comments in the patch script are German. Everything below was measured, nothing is quoted from vendor material.
 
 ## What it does
 
@@ -27,7 +27,7 @@ Every anchor in `kvq-patch.py` is asserted with a count of exactly one against t
 | Model | `RadixArk/Qwen3.8-Flash-Next-NVFP4`, TP1, MTP off |
 | GPU | 1× RTX PRO 6000 Blackwell (SM120, 96 GB), driver 595.71 |
 
-Upstream `main` still has the bf16-only guards on this path (checked 2026-09-02). The port to the `qwen4_exp` module name in `main` is the draft PR linked above; this repository keeps the image-build variant.
+Upstream `main` still has the bf16-only guards on this path (checked 2026-09-02). The port to the `qwen4_exp` module name in `main` is the PR linked above; this repository keeps the image-build variant.
 
 ## How to apply
 
