@@ -27,7 +27,7 @@ Every anchor in `kvq-patch.py` is asserted with a count of exactly one against t
 | Model | `RadixArk/Qwen3.8-Flash-Next-NVFP4`, TP1, MTP off |
 | GPU | 1× RTX PRO 6000 Blackwell (SM120, 96 GB), driver 595.71 |
 
-Upstream `main` still has the bf16-only guards on this path (checked 2026-09-02). The patch has not been ported to the `qwen4_exp` module name.
+Upstream `main` still has the bf16-only guards on this path (checked 2026-09-02). The port to the `qwen4_exp` module name in `main` is the draft PR linked above; this repository keeps the image-build variant.
 
 ## How to apply
 
